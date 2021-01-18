@@ -1,41 +1,41 @@
 ﻿using System;
-using System.Drawing;
+//using System.Drawing;
 
 namespace LifeLib
 {
-    public struct Cell
-    {  
-        /// <summary>
-        /// Коородината Х.
-        /// </summary>
-        public int X { get; set; }
-        /// <summary>
-        /// Коородината Y.
-        /// </summary>
-        public int Y { get; set; }
+    //public struct Cell
+    //{  
+    //    /// <summary>
+    //    /// Коородината Х.
+    //    /// </summary>
+    //    public int X { get; set; }
+    //    /// <summary>
+    //    /// Коородината Y.
+    //    /// </summary>
+    //    public int Y { get; set; }
 
-        /// <summary>
-        /// Флаг: живая или мертвая клетка
-        /// </summary>
-        public bool IsAlive { get; set; }
+    //    /// <summary>
+    //    /// Флаг: живая или мертвая клетка
+    //    /// </summary>
+    //    public bool IsAlive { get; set; }
 
-        public Brush Brush { get; set; }
+    //    public Brush Brush { get; set; }
 
-        /// <summary>
-        /// Инициализировать клетку.
-        /// </summary>
-        /// <param name="x">Координата Х</param>
-        /// <param name="y">Координата Y</param>
-        /// <param name="color">Цвет клетки</param>
-        /// <param name="isAlive">Флаг: живая или мертвая клетка</param>
-        public Cell(int x, int y, bool isAlive, Brush brush)
-        {
-            X = x;
-            Y = y;
-            IsAlive = isAlive;
-            Brush = Brushes.White;
-        }
-    }
+    //    /// <summary>
+    //    /// Инициализировать клетку.
+    //    /// </summary>
+    //    /// <param name="x">Координата Х</param>
+    //    /// <param name="y">Координата Y</param>
+    //    /// <param name="color">Цвет клетки</param>
+    //    /// <param name="isAlive">Флаг: живая или мертвая клетка</param>
+    //    public Cell(int x, int y, bool isAlive, Brush brush)
+    //    {
+    //        X = x;
+    //        Y = y;
+    //        IsAlive = isAlive;
+    //        Brush = Brushes.White;
+    //    }
+    //}
 
     public class GameEngine
     {
@@ -45,10 +45,10 @@ namespace LifeLib
         /// </summary>
         private bool[,] Field;
         
-        /// <summary>
-        /// Кол-во клеток на поле
-        /// </summary>
-        private Cell[] Cells;
+        ///// <summary>
+        ///// Кол-во клеток на поле
+        ///// </summary>
+        //private Cell[] Cells;
 
         /// <summary>
         /// Ширина поля.
