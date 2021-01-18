@@ -162,6 +162,7 @@
             this.Window.Size = new System.Drawing.Size(675, 448);
             this.Window.TabIndex = 0;
             this.Window.TabStop = false;
+            this.Window.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Window_MouseMove);
             // 
             // timer
             // 

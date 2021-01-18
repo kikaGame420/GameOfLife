@@ -100,6 +100,10 @@ namespace LifeLib
             StartGeneration(density);
         }
 
+        /// <summary>
+        /// Сгенерировать стартовое поле.
+        /// </summary>
+        /// <param name="density">Кучность генерации.</param>
         private void StartGeneration(int density)
         {
             for (int x = 0; x < Rows; x++)
@@ -111,6 +115,9 @@ namespace LifeLib
             }
         }
 
+        /// <summary>
+        /// Следующий цикл генерации.
+        /// </summary>
         public void NextGeneration()
         {
             var newField = new bool[Rows, Columns];
@@ -135,6 +142,10 @@ namespace LifeLib
             Generation++;
         }
 
+        /// <summary>
+        /// Получить копию игрового поля.
+        /// </summary>
+        /// <returns>Возвращает копию игрового поля.</returns>
         public bool[,] GetGeneration()
         {
             bool[,] newField = new bool[Rows, Columns];
@@ -149,6 +160,12 @@ namespace LifeLib
             return newField;
         }
 
+        /// <summary>
+        /// Проверка правил для клеток.
+        /// </summary>
+        /// <param name="x">Координата X.</param>
+        /// <param name="y">Координата Y.</param>
+        /// <returns>Возвращает кол-во клеток рядом с искомой.</returns>
         private int CheckRules(int x, int y)
         {
             int counter = 0;
@@ -169,6 +186,50 @@ namespace LifeLib
             }
 
             return counter;
+        }
+
+        /// <summary>
+        /// Добавляет клетку в указанные координаты.
+        /// </summary>
+        /// <param name="x">Координата X.</param>
+        /// <param name="y">Координата Y.</param>
+        /// <param name="resolution">Разрешение поля.</param>
+        public void DrawCell(int x, int y, int resolution)
+        {
+            x = x / resolution;
+            y = y / resolution;
+
+            #region Check
+            if (x >= Field.GetLength(0))
+                throw new ArgumentOutOfRangeException("Координата Х выходит за пределы поля.");
+            if(y >= Field.GetLength(1))
+                throw new ArgumentOutOfRangeException("Координата Y выходит за пределы поля.");
+            #endregion
+
+            if (!Field[x, y])
+                Field[x, y] = true;
+        }
+
+        /// <summary>
+        /// Удаляет клетку в указанных координатах.
+        /// </summary>
+        /// <param name="x">Координата X.</param>
+        /// <param name="y">Координата Y.</param>
+        /// /// <param name="resolution">Разрешение поля.</param>
+        public void ClearCell(int x, int y, int resolution)
+        {
+            x = x / resolution;
+            y = y / resolution;
+
+            #region Check
+            if (x >= Field.GetLength(0))
+                throw new ArgumentOutOfRangeException("Координата Х выходит за пределы поля.");
+            if (y >= Field.GetLength(1))
+                throw new ArgumentOutOfRangeException("Координата Y выходит за пределы поля.");
+            #endregion
+
+            if (Field[x, y])
+                Field[x, y] = false;
         }
     }
 }

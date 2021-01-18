@@ -58,6 +58,8 @@ namespace Window
             Text = $"Generation: {gameEngine.Generation}";
         }
 
+        #region Events
+
         private void button1_Click(object sender, System.EventArgs e)
         {
              StartGame();
@@ -79,5 +81,21 @@ namespace Window
         {
             DrawNextGeneration();
         }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                gameEngine.DrawCell(e.Location.X, e.Location.Y, resolution);
+            }
+
+            if (e.Button == MouseButtons.Right)
+            {
+                gameEngine.ClearCell(e.Location.X, e.Location.Y, resolution);
+            }
+        }
+
+        #endregion
+
     }
 }
