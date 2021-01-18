@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Window = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).BeginInit();
             this.Container.Panel1.SuspendLayout();
             this.Container.Panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             // Container.Panel1
             // 
             this.Container.Panel1.BackColor = System.Drawing.Color.CadetBlue;
+            this.Container.Panel1.Controls.Add(this.button3);
             this.Container.Panel1.Controls.Add(this.button2);
             this.Container.Panel1.Controls.Add(this.button1);
             this.Container.Panel1.Controls.Add(this.numDensity);
@@ -156,6 +158,7 @@
             // 
             // Window
             // 
+            this.Window.BackColor = System.Drawing.Color.Black;
             this.Window.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Window.Location = new System.Drawing.Point(0, 0);
             this.Window.Name = "Window";
@@ -167,6 +170,16 @@
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 192);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(98, 32);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Пауза";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
@@ -199,6 +212,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.PictureBox Window;
+        private System.Windows.Forms.Button button3;
     }
 }
 

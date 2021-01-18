@@ -6,9 +6,20 @@ namespace Window
 {
     public partial class Form1 : Form
     {
-        private Graphics graphics;
-        private GameEngine gameEngine;
+        private Graphics graphics;        
         private int resolution;
+
+        private GameEngine gameEngine;
+
+        /// <summary>
+        /// Флаг для кнопки Pause/Resume
+        /// </summary>
+        private bool isPause;
+
+        /// <summary>
+        /// Флаг для кнопок Start и Stop
+        /// </summary>
+        private bool isStart;
 
         public Form1()
         {
@@ -17,14 +28,17 @@ namespace Window
 
         void StartGame()
         {
+            //проверка таймера
             if (timer.Enabled)
                 return;
 
+            //выключение NumericUpDown
             numResolution.Enabled = false;
             numDensity.Enabled = false;
 
             resolution = (int)numResolution.Value;
 
+            //инициализация движка
             gameEngine = new GameEngine(
                 rows: Window.Width / resolution,
                 columns: Window.Height / resolution,
@@ -32,6 +46,9 @@ namespace Window
             );
 
             Text = $"Generation: {gameEngine.Generation}";
+
+            isPause = true;
+            isStart = false;
 
             Window.Image = new Bitmap(Window.Width, Window.Height);
             graphics = Graphics.FromImage(Window.Image);
@@ -60,21 +77,49 @@ namespace Window
 
         #region Events
 
+        //Кнопка Старт
         private void button1_Click(object sender, System.EventArgs e)
         {
-             StartGame();
+            StartGame();
+            isStart = true;
         }
 
+        //Кнопка Стоп
         private void button2_Click(object sender, System.EventArgs e)
         {
+            //активируем NumericUpDown
             numResolution.Enabled = true;
             numDensity.Enabled = true;
 
+            //сбрасывает параметры кнопки Пауза
+            button3.Text = "Пауза";
+            isStart = false;            
+
+            //очищаем и обновляем окно 
             graphics.Clear(Color.Black);
+            Window.Refresh();
 
             timer.Stop();
 
             Text = $"Generation: 0";           
+        }
+
+        //Кнопка Пауза/Продолжить
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+            if(isStart) {
+                if (isPause)
+                {
+                    isPause = false;
+                    button3.Text = "Продолжить";
+                    timer.Stop();
+                }
+                else {
+                    isPause = true;
+                    button3.Text = "Пауза";
+                    timer.Start();
+                }
+            }
         }
 
         private void timer_Tick(object sender, System.EventArgs e)
@@ -94,8 +139,12 @@ namespace Window
                 gameEngine.ClearCell(e.Location.X, e.Location.Y, resolution);
             }
         }
-
+        
         #endregion
+
+        //TODO: Добавить возможность создавать новые поля
+        //TODO: Добавить паузу !?
+        //TODO: Добавить редактор карты. С инструментами: добавления, удаления, очищения и тд.
 
     }
 }
