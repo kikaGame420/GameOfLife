@@ -1,41 +1,7 @@
 ﻿using System;
-//using System.Drawing;
 
 namespace LifeLib
 {
-    //public struct Cell
-    //{  
-    //    /// <summary>
-    //    /// Коородината Х.
-    //    /// </summary>
-    //    public int X { get; set; }
-    //    /// <summary>
-    //    /// Коородината Y.
-    //    /// </summary>
-    //    public int Y { get; set; }
-
-    //    /// <summary>
-    //    /// Флаг: живая или мертвая клетка
-    //    /// </summary>
-    //    public bool IsAlive { get; set; }
-
-    //    public Brush Brush { get; set; }
-
-    //    /// <summary>
-    //    /// Инициализировать клетку.
-    //    /// </summary>
-    //    /// <param name="x">Координата Х</param>
-    //    /// <param name="y">Координата Y</param>
-    //    /// <param name="color">Цвет клетки</param>
-    //    /// <param name="isAlive">Флаг: живая или мертвая клетка</param>
-    //    public Cell(int x, int y, bool isAlive, Brush brush)
-    //    {
-    //        X = x;
-    //        Y = y;
-    //        IsAlive = isAlive;
-    //        Brush = Brushes.White;
-    //    }
-    //}
 
     public class GameEngine
     {
@@ -75,7 +41,6 @@ namespace LifeLib
         /// <summary>
         /// Инициализация движка и клеток
         /// </summary>
-        /// <param name="color">Цвет клетки.</param>
         /// <param name="width">Кол-во строчек.</param>
         /// <param name="height">Кол-во столбцов.</param>
         /// <param name="density">Кучность генерации клеток.</param>
@@ -94,7 +59,7 @@ namespace LifeLib
             Columns = columns;
 
             Field = new bool[rows, columns];
-
+            
             random = new Random();
 
             StartGeneration(density);

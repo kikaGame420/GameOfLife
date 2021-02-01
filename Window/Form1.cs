@@ -45,7 +45,7 @@ namespace Window
                 density: (int)numDensity.Value
             );
 
-            Text = $"Generation: {gameEngine.Generation}";
+            label3.Text = $"Generation: {gameEngine.Generation}";
 
             isPause = true;
             isStart = false;
@@ -72,7 +72,7 @@ namespace Window
             }                
 
             Window.Refresh();
-            Text = $"Generation: {gameEngine.Generation}";
+            label3.Text = $"Generation: {gameEngine.Generation}";
         }
 
         #region Events
@@ -101,7 +101,7 @@ namespace Window
 
             timer.Stop();
 
-            Text = $"Generation: 0";           
+            label3.Text = $"Generation: 0";           
         }
 
         //Кнопка Пауза/Продолжить
@@ -139,7 +139,12 @@ namespace Window
                 gameEngine.ClearCell(e.Location.X, e.Location.Y, resolution);
             }
         }
-        
+
+        private void Window_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
         #endregion
 
         //TODO: Добавить возможность создавать новые поля
